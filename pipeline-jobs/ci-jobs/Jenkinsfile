@@ -1,4 +1,7 @@
 node('Jenkins_Slave'){
+    stage('Code Checkout'){
+        git 'https://github.com/bhanudevops2019/test_studentapp-ui.git'
+    }
     stage("Compile"){
           sh '''
           mvn compile
