@@ -1,5 +1,5 @@
 node('Jenkins_Slave'){
-    
+
     stage('Code Checkout'){
         git 'https://github.com/bhanudevops2019/test_studentapp-ui.git'
     }
@@ -17,6 +17,12 @@ mvn sonar:sonar \
   -Dsonar.organization=bhanudevops2019-github \
   -Dsonar.host.url=https://sonarcloud.io \
   -Dsonar.login=a2bf29f527084fbbb7e5ac525851c8069592ba0e        
+        '''
+    }
+
+    stage('Build'){
+        sh '''
+        mvn package
         '''
     }
 }
