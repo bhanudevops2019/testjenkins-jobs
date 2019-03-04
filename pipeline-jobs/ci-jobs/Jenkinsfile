@@ -1,0 +1,7 @@
+node('Jenkins_Slave'){
+    stage("Compile"){
+          sh '''
+          mvn compile
+          '''
+    }
+}

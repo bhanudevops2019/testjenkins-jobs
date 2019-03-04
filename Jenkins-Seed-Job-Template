@@ -1,0 +1,25 @@
+pipelineJob('test_StudentProject-UI-CI') {
+    description('test_StudentProject-UI-CI')
+    configure { flowdefinition ->
+
+    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',
+    plugin:'workflow-cps@2.63'){
+        'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git@4.0.0-rc'){
+            'configureVersion'(2)
+            'userRemoteConfigs' {
+                'hudson.plugins.git.UserRemoteConfig' {
+                    'url'('https://github.com/bhanudevops2019/testjenkins-jobs.git')\
+                }
+            }
+            'branches' {
+                'huson.plugins.git.BranchSpec' {
+                    'name'('*/master')
+                }
+            }
+        }
+        'scriptPath'('pipeline-jobs/ci-jobs/Jenkinsfile')
+        'lightweight'(true)
+    }
+
+    }
+}
